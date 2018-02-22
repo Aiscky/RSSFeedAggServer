@@ -1,0 +1,17 @@
+app:
+  build: .
+  container_name: rss-feed-aggegator
+  ports:
+    - "8080:8080"
+
+database:
+  image: mysql
+  restart: always
+  volumes:
+    - db:/var/lib/mysql
+  container_name: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: rss_feed_aggregator
+    MYSQL_USERNAME: root
+    MYSQL_PASSWORD: root

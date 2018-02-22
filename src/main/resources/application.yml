@@ -1,0 +1,10 @@
+spring:
+	jpa:
+		hibernate:
+			ddl-auto: create
+
+	datasource:
+		url: jdbc:mysql://localhost:3306/rss_feed_aggregator
+		username: root
+		password: root
+		driver-class-name: com.mysql.jdbc.Driver
