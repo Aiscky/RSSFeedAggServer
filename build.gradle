@@ -63,6 +63,10 @@ springBoot {
   mainClass = "com.aiscky.rss_feed_aggregator.Application"
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.5'
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
