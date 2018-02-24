@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aiscky.rss_feed_aggregator.model.JsonResponse;
+import com.aiscky.rss_feed_aggregator.auth.model.JsonResponse;
 import com.aiscky.rss_feed_aggregator.model.RSSChannel;
 import com.aiscky.rss_feed_aggregator.repository.RSSChannelRepository;
 import com.aiscky.rss_feed_aggregator.service.ChannelMapperService;

@@ -1,4 +1,4 @@
-package com.aiscky.rss_feed_aggregator.model;
+package com.aiscky.rss_feed_aggregator.auth.model;
 
 public class JsonResponse {
 	private Boolean success;

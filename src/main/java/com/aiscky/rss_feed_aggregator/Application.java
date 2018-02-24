@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +16,9 @@ import com.aiscky.rss_feed_aggregator.service.ChannelMapperService;
 @Controller
 @EnableAutoConfiguration
 @PropertySource(value = "classpath:application.yml")
-@ComponentScan({"com.aiscky.rss_feed_aggregator.service", "com.aiscky.rss_feed_aggregator.controller"})
+@ComponentScan({"com.aiscky.rss_feed_aggregator.service", 
+	"com.aiscky.rss_feed_aggregator.controller", 
+	"com.aiscky.rss_feed_aggregator.auth.configuration"})
 public class Application {
 
 	@Autowired
