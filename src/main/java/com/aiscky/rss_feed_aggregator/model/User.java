@@ -50,6 +50,13 @@ public class User implements UserDetails {
 		return authorities;
 	}
 
+	public User setEnabled(boolean disable) {
+		this.enabled = true;
+		return this;
+	}
+	
+	
+	
 	@Override
 	public String getPassword() {
 		return password;
@@ -80,4 +87,8 @@ public class User implements UserDetails {
 		return enabled;
 	}
 	
+	public User setPassword(String password) {
+		this.password = password;
+		return this;
+	}
 }

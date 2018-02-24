@@ -12,4 +12,12 @@ spring:
 logging:
   level:
     netgloo: DEBUG
+    org:
+      springframework:
+        web: DEBUG
+        
+security:
+  oauth2:
+    resource:
+      filter-order: 3
   

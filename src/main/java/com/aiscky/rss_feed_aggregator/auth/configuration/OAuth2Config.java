@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 @EnableAuthorizationServer
 @Configuration
@@ -29,6 +30,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	private UserDetailsService userDetailsService;
 
 	@Autowired
+	@Qualifier("authenticationManagerBean")
 	private AuthenticationManager authenticationManager;
 	
 	@Value("${aiscky.oauth.tokenTimeout:3600}")
@@ -41,9 +43,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer configurer) {
-		log.debug("WENT INTO THE OAUTH2CONFIG CLASS !");
-		configurer.authenticationManager(authenticationManager);
 		configurer.userDetailsService(userDetailsService);
+		configurer.authenticationManager(authenticationManager);
 	}
 	
 	@Override

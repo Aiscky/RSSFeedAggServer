@@ -3,6 +3,7 @@ package com.aiscky.rss_feed_aggregator.auth.configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -21,13 +22,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     }
 
 	@Override
+	@Order(2)
 	public void configure(HttpSecurity http) throws Exception {
-		log.debug("WENT INTO MAPPING CONFIGURER RESOURCE SERVER !");
+		log.error("CONFIGURING THE RESOURCE SERVER");
+		
 		http
-//			.anonymous().and()
-			.authorizeRequests()
-			.anyRequest().permitAll();
-//				.antMatchers("/api/**").authenticated()
-			
+		.csrf().disable()
+        .antMatcher("/api/**")
+        .authorizeRequests()
+            .anyRequest().authenticated();
 	}
 }
