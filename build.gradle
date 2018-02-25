@@ -11,7 +11,7 @@
 buildscript {
 	repositories {
 		jcenter()
-		mavenCentral()	
+		mavenCentral()
 	}
 	dependencies {
     	classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
@@ -37,8 +37,8 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:21.0'
-    
-   	api 'org.springframework.boot:spring-boot-starter-web'
+
+  api 'org.springframework.boot:spring-boot-starter-web'
 	api 'org.springframework.boot:spring-boot-starter-data-rest'
 	api 'org.springframework.boot:spring-boot-starter-data-jpa'
 	api 'mysql:mysql-connector-java'
@@ -53,6 +53,8 @@ dependencies {
 	runtime 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtime 'org.springframework.boot:spring-boot-starter-security'
 	runtime 'org.springframework.security.oauth:spring-security-oauth2'
+  runtime 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.4'
+  runtime 'mysql:mysql-connector-java'
 
     // Use JUnit test framework
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -69,6 +71,3 @@ task wrapper(type: Wrapper) {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-
-
