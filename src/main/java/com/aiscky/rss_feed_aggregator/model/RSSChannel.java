@@ -1,5 +1,6 @@
 package com.aiscky.rss_feed_aggregator.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,10 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -41,6 +46,11 @@ public class RSSChannel {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastBuildDate;
 
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "channel_user", joinColumns = @JoinColumn(name = "channel_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "user_username", referencedColumnName = "username"))
+	public List<User> users;
+	
 	@OneToMany(mappedBy = "channel", cascade = CascadeType.ALL)
 	@JacksonXmlElementWrapper(useWrapping = false)
 	@JacksonXmlProperty(localName = "item")
@@ -101,6 +111,14 @@ public class RSSChannel {
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
 	@Override
 	public String toString() {
@@ -116,5 +134,10 @@ public class RSSChannel {
 		stringBuilder.append("\n}");
 		
 		return stringBuilder.toString();
+	}
+
+	public RSSChannel() {
+		this.items = new ArrayList<RSSItem>();
+		this.users = new ArrayList<User>();
 	}
 }

@@ -1,11 +1,15 @@
 package com.aiscky.rss_feed_aggregator.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -32,6 +36,10 @@ public class RSSItem {
 	@JoinColumn(name = "rss_channel_id")
 	private RSSChannel channel;
 
+	@Column
+	@Temporal(TemporalType.DATE)
+	private Date pubDate;
+	
 	public long getId() {
 		return id;
 	}
@@ -70,5 +78,13 @@ public class RSSItem {
 
 	public void setChannel(RSSChannel channel) {
 		this.channel = channel;
+	}
+
+	public Date getPubDate() {
+		return pubDate;
+	}
+
+	public void setPubDate(Date pubDate) {
+		this.pubDate = pubDate;
 	}
 }

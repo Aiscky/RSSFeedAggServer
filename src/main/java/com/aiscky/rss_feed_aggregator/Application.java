@@ -15,7 +15,7 @@ import com.aiscky.rss_feed_aggregator.service.ChannelMapperService;
 
 @Controller
 @EnableAutoConfiguration
-@PropertySource(value = "classpath:application.yml")
+@PropertySource(value = "classpath:application.properties")
 @ComponentScan({"com.aiscky.rss_feed_aggregator.service", 
 	"com.aiscky.rss_feed_aggregator.controller", 
 	"com.aiscky.rss_feed_aggregator.auth.configuration"})
